@@ -10,8 +10,6 @@ import tensorflow as tf
 with open("vect.pkl", 'rb') as v:
     vect = pickle.load(v)
 
-# with open("4th_model_0_77_accuracy.h5", 'rb') as m:
-#     model = pickle.load(m)
 # Defining and loading model weights for prediction of taken review
 
 input_layer = tf.keras.Input(shape=(2662,))
@@ -22,7 +20,7 @@ model = tf.keras.models.Model(inputs=input_layer, outputs=output_layer, name='IM
 model.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])
 
 model.load_weights("4th_model_0_77_accuracy.h5")
-# model = pickle.load(open("4th_model_0_77_accuracy.h5", 'rb'))
+
 ##############################################################################################
 ##############################################################################################
 
@@ -30,7 +28,7 @@ model.load_weights("4th_model_0_77_accuracy.h5")
 
 st.title("Movie review polarity prediction")
 st.write("Here we will predict polarity of your review for a movie whether or not it is positive.")
-# st.text_input(label="Enter your review below")
+
 
 
 with st.form("my_form"):
