@@ -1,6 +1,6 @@
 import streamlit as st
 import pickle
-import tensorflow as tf
+import keras
 
 #############################################################################################
 #############################################################################################
@@ -12,11 +12,11 @@ with open("vect.pkl", 'rb') as v:
 
 # Defining and loading model weights for prediction of taken review
 
-input_layer = tf.keras.Input(shape=(2662,))
-layer_1 = tf.keras.layers.Dense(1000, activation='relu')(input_layer)
-layer_2 = tf.keras.layers.Dense(500, activation='relu')(layer_1)
-output_layer = tf.keras.layers.Dense(1, activation='sigmoid')(layer_2)
-model = tf.keras.models.Model(inputs=input_layer, outputs=output_layer, name='IMBD')
+input_layer = keras.Input(shape=(2662,))
+layer_1 = keras.layers.Dense(1000, activation='relu')(input_layer)
+layer_2 = keras.layers.Dense(500, activation='relu')(layer_1)
+output_layer = keras.layers.Dense(1, activation='sigmoid')(layer_2)
+model = keras.models.Model(inputs=input_layer, outputs=output_layer, name='IMBD')
 model.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])
 
 model.load_weights("4th_model_0_77_accuracy.h5")
