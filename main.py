@@ -40,12 +40,15 @@ with st.form("my_form"):
 
 
 if submitted:
-    input_review = vect.transform([review])
-    input_review = input_review.toarray()
-
-    predicted_score = model.predict(input_review)
-
-    if predicted_score < 0.5:
-        st.text(f"You've given negative review")
+    if review == '':
+        st.text(f"Please enter your review and press predict")
     else:
-        st.text(f"You've given positive review")
+        input_review = vect.transform([review])
+        input_review = input_review.toarray()
+
+        predicted_score = model.predict(input_review)
+
+        if predicted_score < 0.5:
+            st.text(f"You've given negative review")
+        else:
+            st.text(f"You've given positive review")
